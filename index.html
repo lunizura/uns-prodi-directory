@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direktori Program Studi dan Akreditasi UNS</title>
+  <link rel="icon" href="assets/logo-uns.png" type="image/png">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter / Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .badge-unggul { background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .badge-baik-sekali { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-baik { background-color: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+    .badge-minimal { background-color: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <img src="assets/logo-uns.png" alt="Logo Universitas Sebelas Maret" class="h-10 w-auto object-contain" 
+             onerror="this.src='https://spmb.uns.ac.id/themes/website/assets/images/logo-uns.png'">
+        <div class="border-l border-slate-200 pl-3.5">
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Direktori Prodi &amp; Akreditasi</h1>
+          <p class="text-xs text-slate-500">Universitas Sebelas Maret</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2.5">
+        <a href="data/uns_prodi.json" download="uns_prodi.json" class="hidden sm:inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition shadow-sm">
+          <svg class="w-3.5 h-3.5 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Unduh JSON
+        </a>
+        <a href="data/uns_prodi.csv" download="uns_prodi.csv" class="hidden sm:inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition shadow-sm">
+          <svg class="w-3.5 h-3.5 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Unduh CSV
+        </a>
+        <a href="https://github.com" target="_blank" class="inline-flex items-center px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition shadow-sm">
+          <svg class="w-4 h-4 mr-1.5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          Repositori GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Analytics Stats Section -->
+  <section class="bg-gradient-to-b from-sky-950 via-slate-900 to-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30 mb-3">
+          Basis Data Terpadu SPMB UNS
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Eksplorasi Program Studi &amp; Peringkat Akreditasi
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+          Pusat informasi lengkap seluruh program studi di Universitas Sebelas Maret (UNS). Mencakup jenjang Sarjana, Vokasi, hingga Pascasarjana lengkap dengan peringkat akreditasi nasional, akreditasi internasional, rumpun ilmu, lokasi kampus, dan daya tampung.
+        </p>
+      </div>
+
+      <!-- Quick Metrics Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
+          <p class="text-xs font-medium text-slate-300">Total Program Studi</p>
+          <p id="stat-total" class="text-2xl sm:text-3xl font-extrabold mt-1">177</p>
+          <span class="text-[11px] text-slate-400">S1, Vokasi &amp; Pascasarjana</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
+          <p class="text-xs font-medium text-emerald-300">Akreditasi Unggul</p>
+          <p id="stat-unggul" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">126</p>
+          <span id="stat-unggul-pct" class="text-[11px] text-emerald-300/80">~71% dari total program studi</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
+          <p class="text-xs font-medium text-sky-300">Akreditasi Internasional</p>
+          <p id="stat-intl" class="text-2xl sm:text-3xl font-extrabold text-sky-300 mt-1">36</p>
+          <span class="text-[11px] text-sky-200/80">ASIIN, AQAS, FIBAA, IABEE</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
+          <p class="text-xs font-medium text-indigo-300">Fakultas &amp; Sekolah</p>
+          <p id="stat-faculty" class="text-2xl sm:text-3xl font-extrabold text-indigo-300 mt-1">15</p>
+          <span class="text-[11px] text-indigo-200/80">Unit Pengelola Akademik</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Controls Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 z-10 w-full">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-5 sm:p-6 space-y-4">
+      
+      <!-- Top Row: Search and Select Filters -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
+        <!-- Search Input -->
+        <div class="lg:col-span-4 relative">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <input type="text" id="search-input" placeholder="Cari nama prodi, kode, atau fakultas..." 
+                 class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition">
+        </div>
+
+        <!-- Faculty Filter Dropdown -->
+        <div class="lg:col-span-3">
+          <select id="faculty-select" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+            <option value="ALL">Semua Fakultas / Sekolah</option>
+            <option value="FATISDA">FATISDA (Teknologi Informasi &amp; Sains Data)</option>
+            <option value="FT">FT (Teknik)</option>
+            <option value="FK">FK (Kedokteran)</option>
+            <option value="FEB">FEB (Ekonomika dan Bisnis)</option>
+            <option value="FH">FH (Hukum)</option>
+            <option value="FKIP">FKIP (Keguruan dan Ilmu Pendidikan)</option>
+            <option value="FISIP">FISIP (Ilmu Sosial dan Politik)</option>
+            <option value="FIB">FIB (Ilmu Budaya)</option>
+            <option value="FP">FP (Pertanian)</option>
+            <option value="FPET">FPET (Peternakan)</option>
+            <option value="FSRD">FSRD (Seni Rupa dan Desain)</option>
+            <option value="FKOR">FKOR (Keolahragaan)</option>
+            <option value="FPSI">FPSI (Psikologi)</option>
+            <option value="FMIPA">FMIPA (MIPA)</option>
+            <option value="SV">SV (Sekolah Vokasi)</option>
+            <option value="SPS">SPS (Sekolah Pascasarjana)</option>
+          </select>
+        </div>
+
+        <!-- Rumpun Filter Dropdown -->
+        <div class="lg:col-span-2">
+          <select id="rumpun-select" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+            <option value="ALL">Semua Rumpun</option>
+            <option value="Saintek">Saintek</option>
+            <option value="Soshum">Soshum</option>
+            <option value="Saintek / Keolahragaan">Keolahragaan</option>
+            <option value="Multidisiplin">Multidisiplin</option>
+          </select>
+        </div>
+
+        <!-- Accreditation Filter Dropdown -->
+        <div class="lg:col-span-3">
+          <select id="accreditation-select" class="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+            <option value="ALL">Semua Akreditasi</option>
+            <option value="Unggul">Unggul</option>
+            <option value="Baik Sekali">Baik Sekali</option>
+            <option value="Baik">Baik</option>
+            <option value="A">Peringkat A</option>
+            <option value="B">Peringkat B</option>
+            <option value="Minimal">Akreditasi Minimal</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Level Pills, Location, Intl Filter, and View Switcher -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+        
+        <!-- Jenjang Pills -->
+        <div class="flex flex-wrap items-center gap-1.5" id="level-pills">
+          <button data-level="ALL" class="level-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-700 text-white shadow-sm transition">Semua Jenjang</button>
+          <button data-level="S1" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Sarjana (S1)</button>
+          <button data-level="VOKASI" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Vokasi (D3/D4)</button>
+          <button data-level="PASCA" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Pascasarjana (S2/S3)</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Kampus Location Filter -->
+          <select id="location-select" class="py-1.5 px-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+            <option value="ALL">Semua Lokasi Kampus</option>
+            <option value="Kampus Utama (Surakarta)">Kampus Surakarta</option>
+            <option value="Kampus PSDKU Kebumen">Kampus PSDKU Kebumen</option>
+            <option value="Kampus PSDKU Madiun">Kampus PSDKU Madiun</option>
+          </select>
+
+          <!-- International Only Checkbox -->
+          <label class="inline-flex items-center cursor-pointer text-xs font-medium text-slate-700 select-none">
+            <input type="checkbox" id="intl-checkbox" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500 h-4 w-4 mr-1.5">
+            <span>Akreditasi Internasional Saja</span>
+          </label>
+
+          <!-- View Switcher -->
+          <div class="hidden sm:inline-flex bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+            <button id="view-grid-btn" class="px-2.5 py-1 rounded-md text-xs font-medium bg-white text-slate-900 shadow-sm" title="Tampilan Kartu">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            </button>
+            <button id="view-table-btn" class="px-2.5 py-1 rounded-md text-xs font-medium text-slate-600 hover:text-slate-900" title="Tampilan Tabel">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+    
+    <!-- Results Header -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="text-xs sm:text-sm text-slate-500">
+        Menampilkan <span id="displayed-count" class="font-bold text-slate-800">0</span> dari <span id="total-count" class="font-bold text-slate-800">177</span> program studi
+      </div>
+      <button id="reset-filters-btn" class="text-xs text-sky-700 hover:text-sky-900 font-semibold hidden">
+        Reset Semua Filter
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden bg-white rounded-2xl border border-slate-200 p-12 text-center my-8">
+      <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-base font-bold text-slate-900">Tidak ada program studi yang cocok</h3>
+      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Coba sesuaikan kata kunci pencarian atau reset filter untuk melihat daftar prodi lainnya.</p>
+    </div>
+
+    <!-- Card View Container -->
+    <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Cards dynamically injected here -->
+    </div>
+
+    <!-- Table View Container -->
+    <div id="table-container" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200 font-semibold">
+              <th class="p-3.5 w-12 text-center">No</th>
+              <th class="p-3.5">Nama Program Studi</th>
+              <th class="p-3.5">Jenjang</th>
+              <th class="p-3.5">Fakultas</th>
+              <th class="p-3.5">Rumpun</th>
+              <th class="p-3.5">Lokasi</th>
+              <th class="p-3.5">Akreditasi</th>
+              <th class="p-3.5">Internasional</th>
+              <th class="p-3.5">Daya Tampung</th>
+              <th class="p-3.5 text-center">Tautan</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-100 text-slate-700">
+            <!-- Table rows dynamically injected here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Notification Toast (for Copy Link) -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition duration-300 ease-out bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 pointer-events-none">
+    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span id="toast-message">Tautan berhasil disalin</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p>Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.</p>
+      <p>Dibuat untuk memudahkan publik dan sivitas akademika dalam mencari informasi program studi resmi.</p>
+    </div>
+  </footer>
+
+  <!-- Script to load data and handle interactive UI -->
+  <script src="data/uns_prodi.js"></script>
+  <script>
+    // State
+    let prodiData = window.UNS_PRODI_DATA || [];
+    let currentLevel = 'ALL';
+    let currentFaculty = 'ALL';
+    let currentRumpun = 'ALL';
+    let currentLocation = 'ALL';
+    let currentAccreditation = 'ALL';
+    let currentSearch = '';
+    let currentIntlOnly = false;
+    let currentView = 'grid';
+
+    // DOM Elements
+    const searchInput = document.getElementById('search-input');
+    const facultySelect = document.getElementById('faculty-select');
+    const rumpunSelect = document.getElementById('rumpun-select');
+    const locationSelect = document.getElementById('location-select');
+    const accreditationSelect = document.getElementById('accreditation-select');
+    const intlCheckbox = document.getElementById('intl-checkbox');
+    const levelButtons = document.querySelectorAll('.level-btn');
+    const gridContainer = document.getElementById('grid-container');
+    const tableContainer = document.getElementById('table-container');
+    const tableBody = document.getElementById('table-body');
+    const emptyState = document.getElementById('empty-state');
+    const displayedCount = document.getElementById('displayed-count');
+    const totalCount = document.getElementById('total-count');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const viewGridBtn = document.getElementById('view-grid-btn');
+    const viewTableBtn = document.getElementById('view-table-btn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    // Fallback if data/uns_prodi.js is not loaded
+    if (!prodiData || prodiData.length === 0) {
+      fetch('data/uns_prodi.json')
+        .then(res => res.json())
+        .then(data => {
+          prodiData = data;
+          initApp();
+        })
+        .catch(err => {
+          console.error("Gagal memuat data prodi:", err);
+        });
+    } else {
+      initApp();
+    }
+
+    function initApp() {
+      totalCount.textContent = prodiData.length;
+      updateStats();
+      loadUrlParams();
+      render();
+      attachEvents();
+    }
+
+    function loadUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('q')) {
+        currentSearch = params.get('q');
+        searchInput.value = currentSearch;
+      }
+      if (params.has('fakultas')) {
+        currentFaculty = params.get('fakultas');
+        facultySelect.value = currentFaculty;
+      }
+      if (params.has('jenjang')) {
+        currentLevel = params.get('jenjang');
+        levelButtons.forEach(b => {
+          if (b.getAttribute('data-level') === currentLevel) {
+            b.classList.add('bg-sky-700', 'text-white', 'shadow-sm');
+            b.classList.remove('bg-slate-100', 'text-slate-600');
+          } else {
+            b.classList.remove('bg-sky-700', 'text-white', 'shadow-sm');
+            b.classList.add('bg-slate-100', 'text-slate-600');
+          }
+        });
+      }
+      if (params.has('rumpun')) {
+        currentRumpun = params.get('rumpun');
+        rumpunSelect.value = currentRumpun;
+      }
+      if (params.has('lokasi')) {
+        currentLocation = params.get('lokasi');
+        locationSelect.value = currentLocation;
+      }
+      if (params.has('akreditasi')) {
+        currentAccreditation = params.get('akreditasi');
+        accreditationSelect.value = currentAccreditation;
+      }
+      if (params.get('intl') === '1') {
+        currentIntlOnly = true;
+        intlCheckbox.checked = true;
+      }
+    }
+
+    function syncUrlParams() {
+      const params = new URLSearchParams();
+      if (currentSearch) params.set('q', currentSearch);
+      if (currentFaculty !== 'ALL') params.set('fakultas', currentFaculty);
+      if (currentLevel !== 'ALL') params.set('jenjang', currentLevel);
+      if (currentRumpun !== 'ALL') params.set('rumpun', currentRumpun);
+      if (currentLocation !== 'ALL') params.set('lokasi', currentLocation);
+      if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
+      if (currentIntlOnly) params.set('intl', '1');
+
+      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    function updateStats() {
+      const unggulCount = prodiData.filter(p => p.akreditasi && p.akreditasi.toLowerCase().includes('unggul')).length;
+      const intlCount = prodiData.filter(p => p.akreditasi_internasional && p.akreditasi_internasional.length > 0).length;
+      const faculties = new Set(prodiData.map(p => p.fakultas_singkatan)).size;
+
+      document.getElementById('stat-total').textContent = prodiData.length;
+      document.getElementById('stat-unggul').textContent = unggulCount;
+      document.getElementById('stat-unggul-pct').textContent = `~${Math.round((unggulCount / prodiData.length) * 100)}% dari total prodi`;
+      document.getElementById('stat-intl').textContent = intlCount;
+      document.getElementById('stat-faculty').textContent = faculties;
+    }
+
+    function attachEvents() {
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase().trim();
+        syncUrlParams();
+        render();
+      });
+
+      facultySelect.addEventListener('change', (e) => {
+        currentFaculty = e.target.value;
+        syncUrlParams();
+        render();
+      });
+
+      rumpunSelect.addEventListener('change', (e) => {
+        currentRumpun = e.target.value;
+        syncUrlParams();
+        render();
+      });
+
+      locationSelect.addEventListener('change', (e) => {
+        currentLocation = e.target.value;
+        syncUrlParams();
+        render();
+      });
+
+      accreditationSelect.addEventListener('change', (e) => {
+        currentAccreditation = e.target.value;
+        syncUrlParams();
+        render();
+      });
+
+      intlCheckbox.addEventListener('change', (e) => {
+        currentIntlOnly = e.target.checked;
+        syncUrlParams();
+        render();
+      });
+
+      levelButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          levelButtons.forEach(b => {
+            b.classList.remove('bg-sky-700', 'text-white', 'shadow-sm');
+            b.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+          });
+          btn.classList.add('bg-sky-700', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+          currentLevel = btn.getAttribute('data-level');
+          syncUrlParams();
+          render();
+        });
+      });
+
+      viewGridBtn.addEventListener('click', () => setView('grid'));
+      viewTableBtn.addEventListener('click', () => setView('table'));
+      resetFiltersBtn.addEventListener('click', resetFilters);
+    }
+
+    function setView(view) {
+      currentView = view;
+      if (view === 'grid') {
+        gridContainer.classList.remove('hidden');
+        tableContainer.classList.add('hidden');
+        viewGridBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+        viewGridBtn.classList.remove('text-slate-600');
+        viewTableBtn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+        viewTableBtn.classList.add('text-slate-600');
+      } else {
+        gridContainer.classList.add('hidden');
+        tableContainer.classList.remove('hidden');
+        viewTableBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+        viewTableBtn.classList.remove('text-slate-600');
+        viewGridBtn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+        viewGridBtn.classList.add('text-slate-600');
+      }
+    }
+
+    function resetFilters() {
+      searchInput.value = '';
+      currentSearch = '';
+      facultySelect.value = 'ALL';
+      currentFaculty = 'ALL';
+      rumpunSelect.value = 'ALL';
+      currentRumpun = 'ALL';
+      locationSelect.value = 'ALL';
+      currentLocation = 'ALL';
+      accreditationSelect.value = 'ALL';
+      currentAccreditation = 'ALL';
+      intlCheckbox.checked = false;
+      currentIntlOnly = false;
+      
+      levelButtons.forEach(b => {
+        if (b.getAttribute('data-level') === 'ALL') {
+          b.classList.add('bg-sky-700', 'text-white', 'shadow-sm');
+          b.classList.remove('bg-slate-100', 'text-slate-600');
+        } else {
+          b.classList.remove('bg-sky-700', 'text-white', 'shadow-sm');
+          b.classList.add('bg-slate-100', 'text-slate-600');
+        }
+      });
+      currentLevel = 'ALL';
+      syncUrlParams();
+      render();
+    }
+
+    function showToast(message) {
+      toastMessage.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2200);
+    }
+
+    window.copyProdiLink = function(id) {
+      const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(id);
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Tautan prodi berhasil disalin ke clipboard');
+      }).catch(() => {
+        showToast('Gagal menyalin tautan');
+      });
+    };
+
+    function filterData() {
+      return prodiData.filter(item => {
+        if (currentSearch) {
+          const matchName = item.nama_prodi.toLowerCase().includes(currentSearch);
+          const matchFaculty = (item.fakultas || '').toLowerCase().includes(currentSearch);
+          const matchFacShort = (item.fakultas_singkatan || '').toLowerCase().includes(currentSearch);
+          const matchKode = (item.kode_prodi || '').includes(currentSearch);
+          const matchId = (item.id || '').toLowerCase().includes(currentSearch);
+          if (!matchName && !matchFaculty && !matchFacShort && !matchKode && !matchId) {
+            return false;
+          }
+        }
+
+        if (currentLevel !== 'ALL') {
+          if (currentLevel === 'S1' && item.jenjang !== 'S1') return false;
+          if (currentLevel === 'VOKASI' && item.kategori !== 'Vokasi') return false;
+          if (currentLevel === 'PASCA' && item.kategori !== 'Pascasarjana') return false;
+        }
+
+        if (currentFaculty !== 'ALL') {
+          if (item.fakultas_singkatan !== currentFaculty) return false;
+        }
+
+        if (currentRumpun !== 'ALL') {
+          if (item.rumpun !== currentRumpun) return false;
+        }
+
+        if (currentLocation !== 'ALL') {
+          if (item.lokasi_kampus !== currentLocation) return false;
+        }
+
+        if (currentAccreditation !== 'ALL') {
+          const akr = (item.akreditasi || '').toLowerCase();
+          if (currentAccreditation === 'Unggul' && !akr.includes('unggul')) return false;
+          if (currentAccreditation === 'Baik Sekali' && !akr.includes('baik sekali')) return false;
+          if (currentAccreditation === 'Baik' && (akr !== 'baik')) return false;
+          if (currentAccreditation === 'A' && akr !== 'a') return false;
+          if (currentAccreditation === 'B' && akr !== 'b') return false;
+          if (currentAccreditation === 'Minimal' && !akr.includes('minimal')) return false;
+        }
+
+        if (currentIntlOnly) {
+          if (!item.akreditasi_internasional || item.akreditasi_internasional.length === 0) return false;
+        }
+
+        return true;
+      });
+    }
+
+    function getAccreditationBadgeClass(akr) {
+      const lower = (akr || '').toLowerCase();
+      if (lower.includes('unggul')) return 'badge-unggul';
+      if (lower.includes('baik sekali')) return 'badge-baik-sekali';
+      if (lower === 'baik') return 'badge-baik';
+      if (lower.includes('minimal')) return 'badge-minimal';
+      return 'badge-baik';
+    }
+
+    function getJenjangBadgeColor(jenjang) {
+      switch(jenjang) {
+        case 'S1': return 'bg-sky-100 text-sky-800 border-sky-200';
+        case 'D3': return 'bg-amber-100 text-amber-800 border-amber-200';
+        case 'D4': return 'bg-orange-100 text-orange-800 border-orange-200';
+        case 'S2': return 'bg-purple-100 text-purple-800 border-purple-200';
+        case 'S3': return 'bg-rose-100 text-rose-800 border-rose-200';
+        default: return 'bg-slate-100 text-slate-800 border-slate-200';
+      }
+    }
+
+    function render() {
+      const filtered = filterData();
+      displayedCount.textContent = filtered.length;
+
+      const isFiltered = currentSearch || currentFaculty !== 'ALL' || currentAccreditation !== 'ALL' || currentLevel !== 'ALL' || currentRumpun !== 'ALL' || currentLocation !== 'ALL' || currentIntlOnly;
+      resetFiltersBtn.classList.toggle('hidden', !isFiltered);
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        gridContainer.innerHTML = '';
+        tableBody.innerHTML = '';
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      // Render Cards
+      gridContainer.innerHTML = filtered.map(item => {
+        const intlBadges = (item.akreditasi_internasional || []).map(intl => `
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300">
+            ${intl}
+          </span>
+        `).join('');
+
+        const isPsdku = item.lokasi_kampus && item.lokasi_kampus.includes('PSDKU');
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition p-5 flex flex-col justify-between group">
+            <div>
+              <!-- Header badges -->
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold border ${getJenjangBadgeColor(item.jenjang)}">
+                    ${item.jenjang}
+                  </span>
+                  ${item.kode_prodi ? `<span class="text-[11px] font-mono text-slate-400">#${item.kode_prodi}</span>` : ''}
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                    ${item.rumpun}
+                  </span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-lg text-xs font-semibold ${getAccreditationBadgeClass(item.akreditasi)}">
+                  ${item.akreditasi} ${item.akreditasi_skor ? `(${item.akreditasi_skor})` : ''}
+                </span>
+              </div>
+
+              <!-- Program Name -->
+              <h3 class="text-base font-bold text-slate-900 group-hover:text-sky-700 transition leading-snug">
+                ${item.nama_prodi}
+              </h3>
+
+              <!-- Faculty -->
+              <div class="mt-1 flex items-center space-x-1.5 text-xs text-slate-500">
+                <span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold text-[10px]">${item.fakultas_singkatan}</span>
+                <span class="truncate">${item.fakultas}</span>
+              </div>
+
+              <!-- Location Tag if PSDKU -->
+              ${isPsdku ? `
+                <div class="mt-2 text-[11px] font-medium text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200 inline-block">
+                  ${item.lokasi_kampus}
+                </div>
+              ` : ''}
+
+              <!-- International accreditation badges -->
+              ${intlBadges ? `<div class="mt-3 flex flex-wrap gap-1">${intlBadges}</div>` : ''}
+            </div>
+
+            <!-- Card Bottom: Daya Tampung & Links -->
+            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+              <div class="text-slate-500">
+                Daya Tampung: <strong class="text-slate-800">${item.daya_tampung || '-'}</strong>
+              </div>
+              <div class="flex items-center space-x-1.5">
+                <button onclick="copyProdiLink('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Salin Tautan Prodi">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+                ${item.link_sk_akreditasi ? `
+                  <a href="${item.link_sk_akreditasi}" target="_blank" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-700 hover:bg-slate-100 transition" title="Dokumen SK Akreditasi">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </a>
+                ` : ''}
+                ${item.website ? `
+                  <a href="${item.website}" target="_blank" class="inline-flex items-center px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 hover:bg-sky-100 font-semibold transition text-xs">
+                    Situs
+                    <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      // Render Table
+      tableBody.innerHTML = filtered.map((item, idx) => `
+        <tr class="hover:bg-slate-50/80 transition">
+          <td class="p-3.5 text-center text-slate-400 font-mono">${idx + 1}</td>
+          <td class="p-3.5 font-bold text-slate-900">${item.nama_prodi}</td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${getJenjangBadgeColor(item.jenjang)}">
+              ${item.jenjang}
+            </span>
+          </td>
+          <td class="p-3.5">
+            <span class="font-semibold text-slate-800">${item.fakultas_singkatan}</span>
+            <span class="text-slate-400 block text-[11px]">${item.fakultas}</span>
+          </td>
+          <td class="p-3.5 text-slate-600 font-medium">${item.rumpun}</td>
+          <td class="p-3.5 text-slate-500 text-[11px]">${item.lokasi_kampus}</td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded text-[11px] font-semibold ${getAccreditationBadgeClass(item.akreditasi)}">
+              ${item.akreditasi}
+            </span>
+          </td>
+          <td class="p-3.5">
+            ${(item.akreditasi_internasional || []).length > 0 
+              ? `<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200 text-[10px]">${item.akreditasi_internasional.join(', ')}</span>` 
+              : '<span class="text-slate-300">-</span>'}
+          </td>
+          <td class="p-3.5 font-medium">${item.daya_tampung || '-'}</td>
+          <td class="p-3.5 text-center">
+            <div class="inline-flex items-center space-x-1">
+              ${item.website ? `<a href="${item.website}" target="_blank" class="p-1 text-sky-700 hover:text-sky-900" title="Situs Resmi"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>` : ''}
+              ${item.link_sk_akreditasi ? `<a href="${item.link_sk_akreditasi}" target="_blank" class="p-1 text-slate-500 hover:text-slate-800" title="Dokumen SK"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></a>` : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
