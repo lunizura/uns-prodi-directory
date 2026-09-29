@@ -66,21 +66,6 @@ Lalu akses `http://localhost:8000` pada peramban Anda.
 
 ---
 
-## Deploy ke GitHub Pages (Gratis & 1 Klik)
-
-Untuk mempublikasikan situs web ini secara online:
-
-1. Push folder repositori ini ke akun GitHub Anda.
-2. Di halaman repositori GitHub, buka menu **Settings** > **Pages** (di sidebar kiri).
-3. Pada bagian **Build and deployment** > **Branch**:
-   - Pilih branch `main` (atau `master`).
-   - Folder: pilih `/ (root)`.
-   - Klik **Save**.
-4. Dalam 1-2 menit, situs akan aktif dan dapat diakses di:  
-   `https://<username>.github.io/uns-prodi-directory/`
-
----
-
 ## Menggunakan Dataset sebagai Public API
 
 Data dapat diambil secara langsung di aplikasi Anda (React, Vue, Flutter, Python, Go, dll.) menggunakan URL raw GitHub atau CDN jsDelivr:
@@ -117,17 +102,3 @@ uns-prodi-directory/
 
 ---
 
-## Cara Memperbarui Data
-
-Jika terdapat pembaruan akreditasi atau perubahan daya tampung di portal SPMB UNS, jalankan script ekstraksi data:
-
-```bash
-python scripts/fetch_uns_data.py
-```
-Script akan mengambil data terbaru, menormalisasi peringkat, dan memperbarui seluruh berkas di folder `data/`.
-
----
-
-## Lisensi dan Atribusi
-
-Proyek ini menggunakan lisensi [MIT License](LICENSE). Data mentah bersumber dari **Universitas Sebelas Maret (UNS)** yang dipublikasikan secara terbuka melalui portal [spmb.uns.ac.id](https://spmb.uns.ac.id).
