@@ -1,3 +1,9 @@
+window.UNS_METADATA = {
+  "last_updated_iso": "2026-09-29T23:31:09.244765",
+  "last_updated_date": "29 September 2026",
+  "total_prodi": 177,
+  "source": "https://spmb.uns.ac.id"
+};
 window.UNS_PRODI_DATA = [
   {
     "id": "s1-agribisnis",

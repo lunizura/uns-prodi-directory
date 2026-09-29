@@ -226,20 +226,39 @@ def fetch_data():
     print(f"Successfully processed {len(all_prodi)} study programs.")
     return all_prodi
 
+from datetime import datetime
+
 def save_outputs(prodi_list):
-    # 1. Save JSON
+    now = datetime.now()
+    months = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+    formatted_date = f"{now.day} {months[now.month]} {now.year}"
+    metadata = {
+        "last_updated_iso": now.isoformat(),
+        "last_updated_date": formatted_date,
+        "total_prodi": len(prodi_list),
+        "source": "https://spmb.uns.ac.id"
+    }
+
+    # 1. Save Metadata JSON
+    meta_path = os.path.join(DATA_DIR, "metadata.json")
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=2, ensure_ascii=False)
+    print(f"Saved: {meta_path}")
+
+    # 2. Save Prodi JSON
     json_path = os.path.join(DATA_DIR, "uns_prodi.json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(prodi_list, f, indent=2, ensure_ascii=False)
     print(f"Saved: {json_path}")
     
-    # 2. Save JS (for file:// protocol offline compatibility)
+    # 3. Save JS (for file:// protocol offline compatibility)
     js_path = os.path.join(DATA_DIR, "uns_prodi.js")
     with open(js_path, "w", encoding="utf-8") as f:
+        f.write("window.UNS_METADATA = " + json.dumps(metadata, indent=2, ensure_ascii=False) + ";\n")
         f.write("window.UNS_PRODI_DATA = " + json.dumps(prodi_list, indent=2, ensure_ascii=False) + ";\n")
     print(f"Saved: {js_path}")
     
-    # 3. Save CSV
+    # 4. Save CSV
     csv_path = os.path.join(DATA_DIR, "uns_prodi.csv")
     fieldnames = [
         'id', 'kode_prodi', 'nama_prodi', 'jenjang', 'kategori',

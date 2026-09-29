@@ -71,7 +71,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30 mb-3">
-          Basis Data Terpadu SPMB UNS
+          Basis Data Terpadu SPMB UNS &bull; Diperbarui: <span id="hero-updated-date" class="ml-1 text-sky-100 font-medium">29 September 2026</span>
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
           Eksplorasi Program Studi &amp; Peringkat Akreditasi
@@ -216,13 +216,23 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
     
     <!-- Results Header -->
-    <div class="flex items-center justify-between mb-4">
-      <div class="text-xs sm:text-sm text-slate-500">
-        Menampilkan <span id="displayed-count" class="font-bold text-slate-800">0</span> dari <span id="total-count" class="font-bold text-slate-800">177</span> program studi
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <div class="text-xs sm:text-sm text-slate-500 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        <span>Menampilkan <strong id="displayed-count" class="text-slate-800">0</strong> dari <strong id="total-count" class="text-slate-800">177</strong> program studi</span>
+        <span class="hidden sm:inline text-slate-300">|</span>
+        <span class="text-slate-500">Pembaruan: <strong id="results-updated-date" class="text-slate-700">29 September 2026</strong></span>
       </div>
       <button id="reset-filters-btn" class="text-xs text-sky-700 hover:text-sky-900 font-semibold hidden">
         Reset Semua Filter
       </button>
+    </div>
+
+    <!-- Freshness Warning Banner (shown if data is older than 90 days) -->
+    <div id="freshness-warning" class="hidden mb-5 p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start space-x-2.5 shadow-sm">
+      <svg class="w-4 h-4 text-amber-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      <div>
+        <span class="font-bold">Peringatan Pembaruan Data:</span> Data direktori ini diekstraksi pada <strong id="warning-date">29 September 2026</strong> (<span id="days-ago">0</span> hari yang lalu). Status akreditasi atau kuota daya tampung mungkin telah mengalami pembaruan resmi di SPMB UNS.
+      </div>
     </div>
 
     <!-- Empty State -->
@@ -274,9 +284,9 @@
 
   <!-- Footer -->
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-1">
+    <div class="max-w-7xl mx-auto px-4 space-y-1.5">
       <p>Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.</p>
-      <p>Dibuat untuk memudahkan publik dan sivitas akademika dalam mencari informasi program studi resmi.</p>
+      <p class="text-slate-400">Pembaruan data terakhir: <strong id="footer-updated-date" class="text-slate-600">29 September 2026</strong>. Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi.</p>
     </div>
   </footer>
 
@@ -332,9 +342,39 @@
     function initApp() {
       totalCount.textContent = prodiData.length;
       updateStats();
+      updateFreshness();
       loadUrlParams();
       render();
       attachEvents();
+    }
+
+    function updateFreshness() {
+      const metadata = window.UNS_METADATA || {};
+      const dateStr = metadata.last_updated_date || "29 September 2026";
+      
+      const heroDate = document.getElementById('hero-updated-date');
+      const resultsDate = document.getElementById('results-updated-date');
+      const footerDate = document.getElementById('footer-updated-date');
+      
+      if (heroDate) heroDate.textContent = dateStr;
+      if (resultsDate) resultsDate.textContent = dateStr;
+      if (footerDate) footerDate.textContent = dateStr;
+
+      if (metadata.last_updated_iso) {
+        const lastDate = new Date(metadata.last_updated_iso);
+        const now = new Date();
+        const diffDays = Math.floor(Math.abs(now - lastDate) / (1000 * 60 * 60 * 24));
+        
+        // If data is older than 90 days, show the warning banner
+        if (diffDays >= 90) {
+          const warningBanner = document.getElementById('freshness-warning');
+          const warningDate = document.getElementById('warning-date');
+          const daysAgoSpan = document.getElementById('days-ago');
+          if (warningBanner) warningBanner.classList.remove('hidden');
+          if (warningDate) warningDate.textContent = dateStr;
+          if (daysAgoSpan) daysAgoSpan.textContent = diffDays;
+        }
+      }
     }
 
     function loadUrlParams() {
