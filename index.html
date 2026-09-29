@@ -49,19 +49,18 @@
         <img src="assets/logo-uns.png" alt="Logo Universitas Sebelas Maret" class="h-10 w-auto object-contain" 
              onerror="this.src='https://spmb.uns.ac.id/themes/website/assets/images/logo-uns.png'">
         <div class="border-l border-slate-200 pl-3.5">
-          <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Direktori Prodi &amp; Akreditasi</h1>
-          <p class="text-xs text-slate-500">Universitas Sebelas Maret</p>
+          <h1 id="nav-title" class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Direktori Prodi &amp; Akreditasi</h1>
+          <p id="nav-sub" class="text-xs text-slate-500">Universitas Sebelas Maret</p>
         </div>
       </div>
+      
+      <!-- Right Side Controls: Language Switcher -->
       <div class="flex items-center space-x-2">
-        <a href="data/uns_prodi.json" download="uns_prodi.json" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition shadow-sm">
-          <svg class="w-3.5 h-3.5 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Unduh JSON
-        </a>
-        <a href="data/uns_prodi.csv" download="uns_prodi.csv" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition shadow-sm">
-          <svg class="w-3.5 h-3.5 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Unduh CSV
-        </a>
+        <button id="lang-toggle-btn" class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 transition shadow-sm" title="Ganti Bahasa / Switch Language">
+          <span id="lang-label-id" class="text-sky-700 font-bold">ID</span>
+          <span class="mx-1 text-slate-300">/</span>
+          <span id="lang-label-en" class="text-slate-400">EN</span>
+        </button>
       </div>
     </div>
   </header>
@@ -71,12 +70,12 @@
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30 mb-3">
-          Basis Data Terpadu SPMB UNS &bull; Diperbarui: <span id="hero-updated-date" class="ml-1 text-sky-100 font-medium">29 September 2026</span>
+          <span id="hero-badge-prefix">Basis Data Terpadu SPMB UNS &bull; Diperbarui:</span> <span id="hero-updated-date" class="ml-1 text-sky-100 font-medium">29 September 2026</span>
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+        <h2 id="hero-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight">
           Eksplorasi Program Studi &amp; Peringkat Akreditasi
         </h2>
-        <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p id="hero-desc" class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
           Pusat informasi lengkap seluruh program studi di Universitas Sebelas Maret (UNS). Mencakup jenjang Sarjana, Vokasi, hingga Pascasarjana lengkap dengan peringkat akreditasi nasional, akreditasi internasional, rumpun ilmu, lokasi kampus, dan daya tampung.
         </p>
       </div>
@@ -84,24 +83,24 @@
       <!-- Quick Metrics Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
-          <p class="text-xs font-medium text-slate-300">Total Program Studi</p>
+          <p id="stat-total-label" class="text-xs font-medium text-slate-300">Total Program Studi</p>
           <p id="stat-total" class="text-2xl sm:text-3xl font-extrabold mt-1">177</p>
-          <span class="text-[11px] text-slate-400">S1, Vokasi &amp; Pascasarjana</span>
+          <span id="stat-total-sub" class="text-[11px] text-slate-400">S1, Vokasi &amp; Pascasarjana</span>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
-          <p class="text-xs font-medium text-emerald-300">Akreditasi Unggul</p>
+          <p id="stat-unggul-label" class="text-xs font-medium text-emerald-300">Akreditasi Unggul</p>
           <p id="stat-unggul" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">126</p>
           <span id="stat-unggul-pct" class="text-[11px] text-emerald-300/80">~71% dari total program studi</span>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
-          <p class="text-xs font-medium text-sky-300">Akreditasi Internasional</p>
+          <p id="stat-intl-label" class="text-xs font-medium text-sky-300">Akreditasi Internasional</p>
           <p id="stat-intl" class="text-2xl sm:text-3xl font-extrabold text-sky-300 mt-1">36</p>
           <span class="text-[11px] text-sky-200/80">ASIIN, AQAS, FIBAA, IABEE</span>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
-          <p class="text-xs font-medium text-indigo-300">Fakultas &amp; Sekolah</p>
+          <p id="stat-faculty-label" class="text-xs font-medium text-indigo-300">Fakultas &amp; Sekolah</p>
           <p id="stat-faculty" class="text-2xl sm:text-3xl font-extrabold text-indigo-300 mt-1">15</p>
-          <span class="text-[11px] text-indigo-200/80">Unit Pengelola Akademik</span>
+          <span id="stat-faculty-sub" class="text-[11px] text-indigo-200/80">Unit Pengelola Akademik</span>
         </div>
       </div>
     </div>
@@ -175,10 +174,10 @@
         
         <!-- Jenjang Pills -->
         <div class="flex flex-wrap items-center gap-1.5" id="level-pills">
-          <button data-level="ALL" class="level-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-700 text-white shadow-sm transition">Semua Jenjang</button>
-          <button data-level="S1" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Sarjana (S1)</button>
-          <button data-level="VOKASI" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Vokasi (D3/D4)</button>
-          <button data-level="PASCA" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Pascasarjana (S2/S3)</button>
+          <button data-level="ALL" id="pill-all" class="level-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-700 text-white shadow-sm transition">Semua Jenjang</button>
+          <button data-level="S1" id="pill-s1" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Sarjana (S1)</button>
+          <button data-level="VOKASI" id="pill-vokasi" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Vokasi (D3/D4)</button>
+          <button data-level="PASCA" id="pill-pasca" class="level-btn px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition">Pascasarjana (S2/S3)</button>
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
@@ -193,7 +192,7 @@
           <!-- International Only Checkbox -->
           <label class="inline-flex items-center cursor-pointer text-xs font-medium text-slate-700 select-none">
             <input type="checkbox" id="intl-checkbox" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500 h-4 w-4 mr-1.5">
-            <span>Akreditasi Internasional Saja</span>
+            <span id="intl-checkbox-label">Akreditasi Internasional Saja</span>
           </label>
 
           <!-- View Switcher -->
@@ -218,9 +217,9 @@
     <!-- Results Header -->
     <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
       <div class="text-xs sm:text-sm text-slate-500 flex flex-wrap items-center gap-x-2.5 gap-y-1">
-        <span>Menampilkan <strong id="displayed-count" class="text-slate-800">0</strong> dari <strong id="total-count" class="text-slate-800">177</strong> program studi</span>
+        <span><span id="lbl-showing">Menampilkan</span> <strong id="displayed-count" class="text-slate-800">0</strong> <span id="lbl-of">dari</span> <strong id="total-count" class="text-slate-800">177</strong> <span id="lbl-programs">program studi</span></span>
         <span class="hidden sm:inline text-slate-300">|</span>
-        <span class="text-slate-500">Pembaruan: <strong id="results-updated-date" class="text-slate-700">29 September 2026</strong></span>
+        <span class="text-slate-500"><span id="lbl-updated">Pembaruan:</span> <strong id="results-updated-date" class="text-slate-700">29 September 2026</strong></span>
       </div>
       <button id="reset-filters-btn" class="text-xs text-sky-700 hover:text-sky-900 font-semibold hidden">
         Reset Semua Filter
@@ -231,7 +230,7 @@
     <div id="freshness-warning" class="hidden mb-5 p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start space-x-2.5 shadow-sm">
       <svg class="w-4 h-4 text-amber-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
       <div>
-        <span class="font-bold">Peringatan Pembaruan Data:</span> Data direktori ini diekstraksi pada <strong id="warning-date">29 September 2026</strong> (<span id="days-ago">0</span> hari yang lalu). Status akreditasi atau kuota daya tampung mungkin telah mengalami pembaruan resmi di SPMB UNS.
+        <span id="warn-title" class="font-bold">Peringatan Pembaruan Data:</span> <span id="warn-body-1">Data direktori ini diekstraksi pada</span> <strong id="warning-date">29 September 2026</strong> (<span id="days-ago">0</span> <span id="warn-body-2">hari yang lalu). Status akreditasi atau kuota daya tampung mungkin telah mengalami pembaruan resmi di SPMB UNS.</span>
       </div>
     </div>
 
@@ -240,8 +239,8 @@
       <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
-      <h3 class="text-base font-bold text-slate-900">Tidak ada program studi yang cocok</h3>
-      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Coba sesuaikan kata kunci pencarian atau reset filter untuk melihat daftar prodi lainnya.</p>
+      <h3 id="empty-title" class="text-base font-bold text-slate-900">Tidak ada program studi yang cocok</h3>
+      <p id="empty-desc" class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Coba sesuaikan kata kunci pencarian atau reset filter untuk melihat daftar prodi lainnya.</p>
     </div>
 
     <!-- Card View Container -->
@@ -255,16 +254,16 @@
         <table class="w-full text-left border-collapse text-xs">
           <thead>
             <tr class="bg-slate-100 text-slate-700 border-b border-slate-200 font-semibold">
-              <th class="p-3.5 w-12 text-center">No</th>
-              <th class="p-3.5">Nama Program Studi</th>
-              <th class="p-3.5">Jenjang</th>
-              <th class="p-3.5">Fakultas</th>
-              <th class="p-3.5">Rumpun</th>
-              <th class="p-3.5">Lokasi</th>
-              <th class="p-3.5">Akreditasi</th>
-              <th class="p-3.5">Internasional</th>
-              <th class="p-3.5">Daya Tampung</th>
-              <th class="p-3.5 text-center">Tautan</th>
+              <th id="th-no" class="p-3.5 w-12 text-center">No</th>
+              <th id="th-name" class="p-3.5">Nama Program Studi</th>
+              <th id="th-level" class="p-3.5">Jenjang</th>
+              <th id="th-fac" class="p-3.5">Fakultas</th>
+              <th id="th-track" class="p-3.5">Rumpun</th>
+              <th id="th-loc" class="p-3.5">Lokasi</th>
+              <th id="th-acc" class="p-3.5">Akreditasi</th>
+              <th id="th-intl" class="p-3.5">Internasional</th>
+              <th id="th-quota" class="p-3.5">Daya Tampung</th>
+              <th id="th-links" class="p-3.5 text-center">Tautan</th>
             </tr>
           </thead>
           <tbody id="table-body" class="divide-y divide-slate-100 text-slate-700">
@@ -285,15 +284,152 @@
   <!-- Footer -->
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 space-y-1.5">
-      <p>Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.</p>
-      <p class="text-slate-400">Pembaruan data terakhir: <strong id="footer-updated-date" class="text-slate-600">29 September 2026</strong>. Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi.</p>
+      <p id="footer-source">Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.</p>
+      <p class="text-slate-400"><span id="footer-update-lbl">Pembaruan data terakhir:</span> <strong id="footer-updated-date" class="text-slate-600">29 September 2026</strong>. <span id="footer-disclaimer">Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi.</span></p>
     </div>
   </footer>
 
   <!-- Script to load data and handle interactive UI -->
   <script src="data/uns_prodi.js"></script>
   <script>
+    // i18n Dictionary
+    const I18N = {
+      id: {
+        nav_title: "Direktori Prodi & Akreditasi",
+        nav_sub: "Universitas Sebelas Maret",
+        hero_prefix: "Basis Data Terpadu SPMB UNS • Diperbarui:",
+        hero_title: "Eksplorasi Program Studi & Peringkat Akreditasi",
+        hero_desc: "Pusat informasi lengkap seluruh program studi di Universitas Sebelas Maret (UNS). Mencakup jenjang Sarjana, Vokasi, hingga Pascasarjana lengkap dengan peringkat akreditasi nasional, akreditasi internasional, rumpun ilmu, lokasi kampus, dan daya tampung.",
+        stat_total_label: "Total Program Studi",
+        stat_total_sub: "S1, Vokasi & Pascasarjana",
+        stat_unggul_label: "Akreditasi Unggul",
+        stat_unggul_pct: "~71% dari total program studi",
+        stat_intl_label: "Akreditasi Internasional",
+        stat_faculty_label: "Fakultas & Sekolah",
+        stat_faculty_sub: "Unit Pengelola Akademik",
+        search_placeholder: "Cari nama prodi, kode, atau fakultas...",
+        opt_fac_all: "Semua Fakultas / Sekolah",
+        opt_rumpun_all: "Semua Rumpun",
+        opt_rumpun_saintek: "Saintek",
+        opt_rumpun_soshum: "Soshum",
+        opt_rumpun_olahraga: "Keolahragaan",
+        opt_rumpun_multi: "Multidisiplin",
+        opt_acc_all: "Semua Akreditasi",
+        opt_acc_unggul: "Unggul",
+        opt_acc_baik_sekali: "Baik Sekali",
+        opt_acc_baik: "Baik",
+        opt_acc_a: "Peringkat A",
+        opt_acc_b: "Peringkat B",
+        opt_acc_min: "Akreditasi Minimal",
+        pill_all: "Semua Jenjang",
+        pill_s1: "Sarjana (S1)",
+        pill_vokasi: "Vokasi (D3/D4)",
+        pill_pasca: "Pascasarjana (S2/S3)",
+        opt_loc_all: "Semua Lokasi Kampus",
+        opt_loc_solo: "Kampus Surakarta",
+        opt_loc_kebumen: "Kampus PSDKU Kebumen",
+        opt_loc_madiun: "Kampus PSDKU Madiun",
+        intl_only: "Akreditasi Internasional Saja",
+        lbl_showing: "Menampilkan",
+        lbl_of: "dari",
+        lbl_programs: "program studi",
+        lbl_updated: "Pembaruan:",
+        reset_filters: "Reset Semua Filter",
+        warn_title: "Peringatan Pembaruan Data:",
+        warn_body_1: "Data direktori ini diekstraksi pada",
+        warn_body_2: "hari yang lalu). Status akreditasi atau kuota daya tampung mungkin telah mengalami pembaruan resmi di SPMB UNS.",
+        empty_title: "Tidak ada program studi yang cocok",
+        empty_desc: "Coba sesuaikan kata kunci pencarian atau reset filter untuk melihat daftar prodi lainnya.",
+        th_no: "No",
+        th_name: "Nama Program Studi",
+        th_level: "Jenjang",
+        th_fac: "Fakultas",
+        th_track: "Rumpun",
+        th_loc: "Lokasi",
+        th_acc: "Akreditasi",
+        th_intl: "Internasional",
+        th_quota: "Daya Tampung",
+        th_links: "Tautan",
+        card_quota: "Daya Tampung:",
+        card_website: "Situs",
+        card_copy_title: "Salin Tautan Prodi",
+        card_sk_title: "Dokumen SK Akreditasi",
+        toast_copied: "Tautan prodi berhasil disalin ke clipboard",
+        toast_failed: "Gagal menyalin tautan",
+        footer_source: "Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.",
+        footer_update_lbl: "Pembaruan data terakhir:",
+        footer_disclaimer: "Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi."
+      },
+      en: {
+        nav_title: "Study Programs & Accreditation Directory",
+        nav_sub: "Universitas Sebelas Maret (UNS)",
+        hero_prefix: "Official SPMB UNS Database • Updated:",
+        hero_title: "Explore Study Programs & Accreditation Rankings",
+        hero_desc: "Comprehensive public database of all study programs at Universitas Sebelas Maret (UNS), Surakarta. Spanning Undergraduate, Vocational, and Postgraduate programs with national accreditation, international certifications, academic disciplines, campus locations, and admission quotas.",
+        stat_total_label: "Total Study Programs",
+        stat_total_sub: "Undergraduate, Vocational & Postgrad",
+        stat_unggul_label: "Accredited Superior (Unggul)",
+        stat_unggul_pct: "~71% of total study programs",
+        stat_intl_label: "International Accreditation",
+        stat_faculty_label: "Faculties & Schools",
+        stat_faculty_sub: "Academic Management Units",
+        search_placeholder: "Search program name, code, or faculty...",
+        opt_fac_all: "All Faculties / Schools",
+        opt_rumpun_all: "All Disciplines",
+        opt_rumpun_saintek: "Science & Technology",
+        opt_rumpun_soshum: "Social Sciences & Humanities",
+        opt_rumpun_olahraga: "Sports Science",
+        opt_rumpun_multi: "Multidisciplinary",
+        opt_acc_all: "All Accreditations",
+        opt_acc_unggul: "Superior (Unggul)",
+        opt_acc_baik_sekali: "Very Good (Baik Sekali)",
+        opt_acc_baik: "Good (Baik)",
+        opt_acc_a: "Grade A",
+        opt_acc_b: "Grade B",
+        opt_acc_min: "Minimum Accreditation",
+        pill_all: "All Levels",
+        pill_s1: "Undergraduate (S1)",
+        pill_vokasi: "Vocational (D3/D4)",
+        pill_pasca: "Postgraduate (S2/S3)",
+        opt_loc_all: "All Campus Locations",
+        opt_loc_solo: "Surakarta Main Campus",
+        opt_loc_kebumen: "PSDKU Kebumen Campus",
+        opt_loc_madiun: "PSDKU Madiun Campus",
+        intl_only: "International Accreditation Only",
+        lbl_showing: "Showing",
+        lbl_of: "of",
+        lbl_programs: "study programs",
+        lbl_updated: "Updated:",
+        reset_filters: "Reset All Filters",
+        warn_title: "Data Freshness Notice:",
+        warn_body_1: "This directory dataset was snapshot on",
+        warn_body_2: "days ago). Official accreditation ranks or admission quotas may have received updates on SPMB UNS.",
+        empty_title: "No matching study programs found",
+        empty_desc: "Try adjusting your search keywords or resetting active filters to view other study programs.",
+        th_no: "No",
+        th_name: "Program Name",
+        th_level: "Level",
+        th_fac: "Faculty",
+        th_track: "Discipline",
+        th_loc: "Location",
+        th_acc: "Accreditation",
+        th_intl: "International",
+        th_quota: "Quota",
+        th_links: "Links",
+        card_quota: "Admission Quota:",
+        card_website: "Website",
+        card_copy_title: "Copy Program Link",
+        card_sk_title: "Accreditation SK Document",
+        toast_copied: "Program permalink copied to clipboard",
+        toast_failed: "Failed to copy link",
+        footer_source: "Data sourced from <strong>SPMB Universitas Sebelas Maret (UNS)</strong> official portal.",
+        footer_update_lbl: "Last dataset snapshot:",
+        footer_disclaimer: "Official accreditation certificates can be verified through the decree documents provided for each study program."
+      }
+    };
+
     // State
+    let currentLang = localStorage.getItem('uns_dir_lang') || 'id';
     let prodiData = window.UNS_PRODI_DATA || [];
     let currentLevel = 'ALL';
     let currentFaculty = 'ALL';
@@ -323,6 +459,9 @@
     const viewTableBtn = document.getElementById('view-table-btn');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toast-message');
+    const langToggleBtn = document.getElementById('lang-toggle-btn');
+    const langLabelId = document.getElementById('lang-label-id');
+    const langLabelEn = document.getElementById('lang-label-en');
 
     // Fallback if data/uns_prodi.js is not loaded
     if (!prodiData || prodiData.length === 0) {
@@ -342,10 +481,113 @@
     function initApp() {
       totalCount.textContent = prodiData.length;
       updateStats();
-      updateFreshness();
+      applyLanguage(currentLang);
       loadUrlParams();
       render();
       attachEvents();
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('uns_dir_lang', lang);
+      const t = I18N[lang];
+
+      // Update toggle button UI
+      if (lang === 'en') {
+        langLabelId.className = "text-slate-400 font-normal";
+        langLabelEn.className = "text-sky-700 font-bold";
+        document.documentElement.lang = "en";
+      } else {
+        langLabelId.className = "text-sky-700 font-bold";
+        langLabelEn.className = "text-slate-400 font-normal";
+        document.documentElement.lang = "id";
+      }
+
+      // Static text updates
+      document.getElementById('nav-title').textContent = t.nav_title;
+      document.getElementById('nav-sub').textContent = t.nav_sub;
+      document.getElementById('hero-badge-prefix').textContent = t.hero_prefix;
+      document.getElementById('hero-title').textContent = t.hero_title;
+      document.getElementById('hero-desc').textContent = t.hero_desc;
+
+      document.getElementById('stat-total-label').textContent = t.stat_total_label;
+      document.getElementById('stat-total-sub').textContent = t.stat_total_sub;
+      document.getElementById('stat-unggul-label').textContent = t.stat_unggul_label;
+      document.getElementById('stat-intl-label').textContent = t.stat_intl_label;
+      document.getElementById('stat-faculty-label').textContent = t.stat_faculty_label;
+      document.getElementById('stat-faculty-sub').textContent = t.stat_faculty_sub;
+
+      searchInput.placeholder = t.search_placeholder;
+
+      // Select Dropdown Option text updates
+      facultySelect.options[0].text = t.opt_fac_all;
+      rumpunSelect.options[0].text = t.opt_rumpun_all;
+      rumpunSelect.options[1].text = t.opt_rumpun_saintek;
+      rumpunSelect.options[2].text = t.opt_rumpun_soshum;
+      rumpunSelect.options[3].text = t.opt_rumpun_olahraga;
+      rumpunSelect.options[4].text = t.opt_rumpun_multi;
+
+      accreditationSelect.options[0].text = t.opt_acc_all;
+      accreditationSelect.options[1].text = t.opt_acc_unggul;
+      accreditationSelect.options[2].text = t.opt_acc_baik_sekali;
+      accreditationSelect.options[3].text = t.opt_acc_baik;
+      accreditationSelect.options[4].text = t.opt_acc_a;
+      accreditationSelect.options[5].text = t.opt_acc_b;
+      accreditationSelect.options[6].text = t.opt_acc_min;
+
+      locationSelect.options[0].text = t.opt_loc_all;
+      locationSelect.options[1].text = t.opt_loc_solo;
+      locationSelect.options[2].text = t.opt_loc_kebumen;
+      locationSelect.options[3].text = t.opt_loc_madiun;
+
+      // Pill buttons
+      document.getElementById('pill-all').textContent = t.pill_all;
+      document.getElementById('pill-s1').textContent = t.pill_s1;
+      document.getElementById('pill-vokasi').textContent = t.pill_vokasi;
+      document.getElementById('pill-pasca').textContent = t.pill_pasca;
+
+      document.getElementById('intl-checkbox-label').textContent = t.intl_only;
+
+      // Results text
+      document.getElementById('lbl-showing').textContent = t.lbl_showing;
+      document.getElementById('lbl-of').textContent = t.lbl_of;
+      document.getElementById('lbl-programs').textContent = t.lbl_programs;
+      document.getElementById('lbl-updated').textContent = t.lbl_updated;
+      resetFiltersBtn.textContent = t.reset_filters;
+
+      // Warning text
+      document.getElementById('warn-title').textContent = t.warn_title;
+      document.getElementById('warn-body-1').textContent = t.warn_body_1;
+      document.getElementById('warn-body-2').textContent = t.warn_body_2;
+
+      // Empty state
+      document.getElementById('empty-title').textContent = t.empty_title;
+      document.getElementById('empty-desc').textContent = t.empty_desc;
+
+      // Table Headers
+      document.getElementById('th-no').textContent = t.th_no;
+      document.getElementById('th-name').textContent = t.th_name;
+      document.getElementById('th-level').textContent = t.th_level;
+      document.getElementById('th-fac').textContent = t.th_fac;
+      document.getElementById('th-track').textContent = t.th_track;
+      document.getElementById('th-loc').textContent = t.th_loc;
+      document.getElementById('th-acc').textContent = t.th_acc;
+      document.getElementById('th-intl').textContent = t.th_intl;
+      document.getElementById('th-quota').textContent = t.th_quota;
+      document.getElementById('th-links').textContent = t.th_links;
+
+      // Footer
+      document.getElementById('footer-source').innerHTML = t.footer_source;
+      document.getElementById('footer-update-lbl').textContent = t.footer_update_lbl;
+      document.getElementById('footer-disclaimer').textContent = t.footer_disclaimer;
+
+      updateFreshness();
+      render();
+    }
+
+    function toggleLanguage() {
+      const nextLang = currentLang === 'id' ? 'en' : 'id';
+      applyLanguage(nextLang);
     }
 
     function updateFreshness() {
@@ -365,7 +607,6 @@
         const now = new Date();
         const diffDays = Math.floor(Math.abs(now - lastDate) / (1000 * 60 * 60 * 24));
         
-        // If data is older than 90 days, show the warning banner
         if (diffDays >= 90) {
           const warningBanner = document.getElementById('freshness-warning');
           const warningDate = document.getElementById('warning-date');
@@ -377,60 +618,6 @@
       }
     }
 
-    function loadUrlParams() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('q')) {
-        currentSearch = params.get('q');
-        searchInput.value = currentSearch;
-      }
-      if (params.has('fakultas')) {
-        currentFaculty = params.get('fakultas');
-        facultySelect.value = currentFaculty;
-      }
-      if (params.has('jenjang')) {
-        currentLevel = params.get('jenjang');
-        levelButtons.forEach(b => {
-          if (b.getAttribute('data-level') === currentLevel) {
-            b.classList.add('bg-sky-700', 'text-white', 'shadow-sm');
-            b.classList.remove('bg-slate-100', 'text-slate-600');
-          } else {
-            b.classList.remove('bg-sky-700', 'text-white', 'shadow-sm');
-            b.classList.add('bg-slate-100', 'text-slate-600');
-          }
-        });
-      }
-      if (params.has('rumpun')) {
-        currentRumpun = params.get('rumpun');
-        rumpunSelect.value = currentRumpun;
-      }
-      if (params.has('lokasi')) {
-        currentLocation = params.get('lokasi');
-        locationSelect.value = currentLocation;
-      }
-      if (params.has('akreditasi')) {
-        currentAccreditation = params.get('akreditasi');
-        accreditationSelect.value = currentAccreditation;
-      }
-      if (params.get('intl') === '1') {
-        currentIntlOnly = true;
-        intlCheckbox.checked = true;
-      }
-    }
-
-    function syncUrlParams() {
-      const params = new URLSearchParams();
-      if (currentSearch) params.set('q', currentSearch);
-      if (currentFaculty !== 'ALL') params.set('fakultas', currentFaculty);
-      if (currentLevel !== 'ALL') params.set('jenjang', currentLevel);
-      if (currentRumpun !== 'ALL') params.set('rumpun', currentRumpun);
-      if (currentLocation !== 'ALL') params.set('lokasi', currentLocation);
-      if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
-      if (currentIntlOnly) params.set('intl', '1');
-
-      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-      window.history.replaceState({}, '', newUrl);
-    }
-
     function updateStats() {
       const unggulCount = prodiData.filter(p => p.akreditasi && p.akreditasi.toLowerCase().includes('unggul')).length;
       const intlCount = prodiData.filter(p => p.akreditasi_internasional && p.akreditasi_internasional.length > 0).length;
@@ -438,12 +625,14 @@
 
       document.getElementById('stat-total').textContent = prodiData.length;
       document.getElementById('stat-unggul').textContent = unggulCount;
-      document.getElementById('stat-unggul-pct').textContent = `~${Math.round((unggulCount / prodiData.length) * 100)}% dari total prodi`;
+      document.getElementById('stat-unggul-pct').textContent = `~${Math.round((unggulCount / prodiData.length) * 100)}%`;
       document.getElementById('stat-intl').textContent = intlCount;
       document.getElementById('stat-faculty').textContent = faculties;
     }
 
     function attachEvents() {
+      langToggleBtn.addEventListener('click', toggleLanguage);
+
       searchInput.addEventListener('input', (e) => {
         currentSearch = e.target.value.toLowerCase().trim();
         syncUrlParams();
@@ -546,6 +735,64 @@
       render();
     }
 
+    function loadUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('q')) {
+        currentSearch = params.get('q');
+        searchInput.value = currentSearch;
+      }
+      if (params.has('fakultas')) {
+        currentFaculty = params.get('fakultas');
+        facultySelect.value = currentFaculty;
+      }
+      if (params.has('jenjang')) {
+        currentLevel = params.get('jenjang');
+        levelButtons.forEach(b => {
+          if (b.getAttribute('data-level') === currentLevel) {
+            b.classList.add('bg-sky-700', 'text-white', 'shadow-sm');
+            b.classList.remove('bg-slate-100', 'text-slate-600');
+          } else {
+            b.classList.remove('bg-sky-700', 'text-white', 'shadow-sm');
+            b.classList.add('bg-slate-100', 'text-slate-600');
+          }
+        });
+      }
+      if (params.has('rumpun')) {
+        currentRumpun = params.get('rumpun');
+        rumpunSelect.value = currentRumpun;
+      }
+      if (params.has('lokasi')) {
+        currentLocation = params.get('lokasi');
+        locationSelect.value = currentLocation;
+      }
+      if (params.has('akreditasi')) {
+        currentAccreditation = params.get('akreditasi');
+        accreditationSelect.value = currentAccreditation;
+      }
+      if (params.get('intl') === '1') {
+        currentIntlOnly = true;
+        intlCheckbox.checked = true;
+      }
+      if (params.has('lang')) {
+        applyLanguage(params.get('lang'));
+      }
+    }
+
+    function syncUrlParams() {
+      const params = new URLSearchParams();
+      if (currentSearch) params.set('q', currentSearch);
+      if (currentFaculty !== 'ALL') params.set('fakultas', currentFaculty);
+      if (currentLevel !== 'ALL') params.set('jenjang', currentLevel);
+      if (currentRumpun !== 'ALL') params.set('rumpun', currentRumpun);
+      if (currentLocation !== 'ALL') params.set('lokasi', currentLocation);
+      if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
+      if (currentIntlOnly) params.set('intl', '1');
+      if (currentLang !== 'id') params.set('lang', currentLang);
+
+      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.history.replaceState({}, '', newUrl);
+    }
+
     function showToast(message) {
       toastMessage.textContent = message;
       toast.classList.remove('translate-y-20', 'opacity-0');
@@ -557,11 +804,12 @@
     }
 
     window.copyProdiLink = function(id) {
-      const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(id);
+      const t = I18N[currentLang];
+      const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(id) + (currentLang !== 'id' ? '&lang=' + currentLang : '');
       navigator.clipboard.writeText(url).then(() => {
-        showToast('Tautan prodi berhasil disalin ke clipboard');
+        showToast(t.toast_copied);
       }).catch(() => {
-        showToast('Gagal menyalin tautan');
+        showToast(t.toast_failed);
       });
     };
 
@@ -635,6 +883,7 @@
     }
 
     function render() {
+      const t = I18N[currentLang];
       const filtered = filterData();
       displayedCount.textContent = filtered.length;
 
@@ -700,23 +949,23 @@
               ${intlBadges ? `<div class="mt-3 flex flex-wrap gap-1">${intlBadges}</div>` : ''}
             </div>
 
-            <!-- Card Bottom: Daya Tampung & Links -->
+            <!-- Card Bottom: Quota & Links -->
             <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
               <div class="text-slate-500">
-                Daya Tampung: <strong class="text-slate-800">${item.daya_tampung || '-'}</strong>
+                ${t.card_quota} <strong class="text-slate-800">${item.daya_tampung || '-'}</strong>
               </div>
               <div class="flex items-center space-x-1.5">
-                <button onclick="copyProdiLink('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="Salin Tautan Prodi">
+                <button onclick="copyProdiLink('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="${t.card_copy_title}">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 </button>
                 ${item.link_sk_akreditasi ? `
-                  <a href="${item.link_sk_akreditasi}" target="_blank" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-700 hover:bg-slate-100 transition" title="Dokumen SK Akreditasi">
+                  <a href="${item.link_sk_akreditasi}" target="_blank" class="p-1.5 rounded-lg text-slate-400 hover:text-sky-700 hover:bg-slate-100 transition" title="${t.card_sk_title}">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   </a>
                 ` : ''}
                 ${item.website ? `
                   <a href="${item.website}" target="_blank" class="inline-flex items-center px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 hover:bg-sky-100 font-semibold transition text-xs">
-                    Situs
+                    ${t.card_website}
                     <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                   </a>
                 ` : ''}
@@ -756,8 +1005,8 @@
           <td class="p-3.5 font-medium">${item.daya_tampung || '-'}</td>
           <td class="p-3.5 text-center">
             <div class="inline-flex items-center space-x-1">
-              ${item.website ? `<a href="${item.website}" target="_blank" class="p-1 text-sky-700 hover:text-sky-900" title="Situs Resmi"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>` : ''}
-              ${item.link_sk_akreditasi ? `<a href="${item.link_sk_akreditasi}" target="_blank" class="p-1 text-slate-500 hover:text-slate-800" title="Dokumen SK"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></a>` : ''}
+              ${item.website ? `<a href="${item.website}" target="_blank" class="p-1 text-sky-700 hover:text-sky-900" title="${t.card_website}"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>` : ''}
+              ${item.link_sk_akreditasi ? `<a href="${item.link_sk_akreditasi}" target="_blank" class="p-1 text-slate-500 hover:text-slate-800" title="${t.card_sk_title}"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></a>` : ''}
             </div>
           </td>
         </tr>
