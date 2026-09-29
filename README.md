@@ -66,20 +66,3 @@ Lalu akses `http://localhost:8000` pada peramban Anda.
 
 ---
 
-## Menggunakan Dataset sebagai Public API
-
-Data dapat diambil secara langsung di aplikasi Anda (React, Vue, Flutter, Python, Go, dll.) menggunakan URL raw GitHub atau CDN jsDelivr:
-
-```javascript
-// Contoh fetch data prodi dalam JavaScript
-fetch('https://raw.githubusercontent.com/USERNAME/uns-prodi-directory/main/data/uns_prodi.json')
-  .then(response => response.json())
-  .then(data => {
-    console.log(`Berhasil memuat ${data.length} program studi`);
-    const prodiUnggul = data.filter(p => p.akreditasi === 'Unggul');
-    console.log(`Prodi Unggul: ${prodiUnggul.length}`);
-  });
-```
-
----
-
