@@ -83,22 +83,3 @@ fetch('https://raw.githubusercontent.com/USERNAME/uns-prodi-directory/main/data/
 
 ---
 
-## Struktur Repositori
-
-```text
-uns-prodi-directory/
-├── assets/
-│   └── logo-uns.png       # Logo resmi Universitas Sebelas Maret
-├── data/
-│   ├── uns_prodi.json     # Dataset lengkap format JSON
-│   ├── uns_prodi.js       # Format JS untuk kompatibilitas offline (file://)
-│   └── uns_prodi.csv      # Format spreadsheet CSV
-├── scripts/
-│   └── fetch_uns_data.py  # Script Python untuk scraping & update berkala
-├── index.html             # Aplikasi web direktori interaktif
-├── LICENSE                # Lisensi MIT
-└── README.md              # Dokumentasi proyek
-```
-
----
-
