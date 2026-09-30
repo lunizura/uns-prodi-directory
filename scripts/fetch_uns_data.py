@@ -223,8 +223,46 @@ def fetch_data():
                 'link_sk_akreditasi': link_file
             })
             
-    print(f"Successfully processed {len(all_prodi)} study programs.")
-    return all_prodi
+    print(f"Successfully processed {len(all_prodi)} raw study programs.")
+    return deduplicate_and_enrich_prodi(all_prodi)
+
+from prodi_knowledge import get_prodi_profile
+
+def deduplicate_and_enrich_prodi(prodi_list):
+    deduped = {}
+    for p in prodi_list:
+        key = (p['jenjang'], p['nama_prodi'].strip().lower(), p['lokasi_kampus'])
+        if key not in deduped:
+            deduped[key] = p
+        else:
+            existing = deduped[key]
+            # Merge fields intelligently
+            if (not existing.get('kode_prodi') or existing['kode_prodi'] == 'yyyy') and (p.get('kode_prodi') and p['kode_prodi'] != 'yyyy'):
+                existing['kode_prodi'] = p['kode_prodi']
+            if not existing.get('daya_tampung') and p.get('daya_tampung'):
+                existing['daya_tampung'] = p['daya_tampung']
+            if ('yyyy' in existing.get('link_sk_akreditasi', '') or not existing.get('link_sk_akreditasi')) and ('yyyy' not in p.get('link_sk_akreditasi', '') and p.get('link_sk_akreditasi')):
+                existing['link_sk_akreditasi'] = p['link_sk_akreditasi']
+            if not existing.get('website') and p.get('website'):
+                existing['website'] = p['website']
+            if not existing.get('akreditasi_skor') and p.get('akreditasi_skor'):
+                existing['akreditasi_skor'] = p['akreditasi_skor']
+            if not existing.get('akreditasi_internasional') and p.get('akreditasi_internasional'):
+                existing['akreditasi_internasional'] = p['akreditasi_internasional']
+
+    result = list(deduped.values())
+    print(f"After deduplication: {len(result)} unique study programs.")
+
+    # Enrich each prodi with profile overview, what it teaches, and career prospects
+    for p in result:
+        p['profil'] = get_prodi_profile(
+            p['nama_prodi'],
+            p['jenjang'],
+            p.get('fakultas_singkatan', ''),
+            p.get('rumpun', ''),
+            p.get('lokasi_kampus', '')
+        )
+    return result
 
 from datetime import datetime
 
@@ -264,17 +302,19 @@ def save_outputs(prodi_list):
         'id', 'kode_prodi', 'nama_prodi', 'jenjang', 'kategori',
         'rumpun', 'lokasi_kampus', 'fakultas', 'fakultas_singkatan',
         'akreditasi', 'akreditasi_skor', 'akreditasi_internasional',
-        'daya_tampung', 'website', 'link_sk_akreditasi'
+        'daya_tampung', 'website', 'link_sk_akreditasi', 'deskripsi'
     ]
     with open(csv_path, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for p in prodi_list:
-            row = dict(p)
-            row['akreditasi_internasional'] = ", ".join(p['akreditasi_internasional'])
+            row = {k: p.get(k, '') for k in fieldnames}
+            row['akreditasi_internasional'] = ", ".join(p.get('akreditasi_internasional', []))
+            row['deskripsi'] = p.get('profil', {}).get('deskripsi', {}).get('id', '')
             writer.writerow(row)
     print(f"Saved: {csv_path}")
 
 if __name__ == "__main__":
     prodi_data = fetch_data()
     save_outputs(prodi_data)
+

@@ -84,7 +84,7 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
           <p id="stat-total-label" class="text-xs font-medium text-slate-300">Total Program Studi</p>
-          <p id="stat-total" class="text-2xl sm:text-3xl font-extrabold mt-1">177</p>
+          <p id="stat-total" class="text-2xl sm:text-3xl font-extrabold mt-1">176</p>
           <span id="stat-total-sub" class="text-[11px] text-slate-400">S1, Vokasi &amp; Pascasarjana</span>
         </div>
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-lg">
@@ -273,7 +273,106 @@
       </div>
     </div>
 
-  </main>
+  <!-- Modal Dialog: Prodi Overall View -->
+  <div id="prodi-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-labelledby="modal-prodi-name">
+    <div id="modal-card" class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col relative transform scale-95 transition-transform duration-200">
+      
+      <!-- Modal Header Banner -->
+      <div class="p-5 sm:p-6 border-b border-slate-100 flex items-start justify-between relative bg-gradient-to-r from-sky-50/50 via-slate-50 to-white">
+        <div class="pr-8 space-y-1.5">
+          <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+            <span id="modal-jenjang" class="px-2.5 py-0.5 rounded-md text-xs font-bold border"></span>
+            <span id="modal-kode" class="text-xs font-mono text-slate-400"></span>
+            <span id="modal-rumpun" class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200"></span>
+          </div>
+          <h2 id="modal-prodi-name" class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight"></h2>
+          <div class="flex items-center space-x-2 text-xs sm:text-sm text-slate-600">
+            <span id="modal-fakultas-badge" class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold text-xs"></span>
+            <span id="modal-fakultas-name" class="font-medium text-slate-700"></span>
+          </div>
+        </div>
+        <button id="modal-close-btn" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition absolute top-4 sm:top-5 right-4 sm:right-5" title="Tutup / Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-7 space-y-5 text-sm text-slate-700">
+        
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <p id="modal-lbl-acc" class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Akreditasi</p>
+            <div id="modal-acc-val" class="mt-1 font-bold text-xs sm:text-sm"></div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <p id="modal-lbl-quota" class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Daya Tampung</p>
+            <p id="modal-quota-val" class="mt-1 font-extrabold text-slate-900 text-xs sm:text-sm"></p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <p id="modal-lbl-loc" class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Lokasi Kampus</p>
+            <p id="modal-loc-val" class="mt-1 font-semibold text-slate-800 text-xs"></p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <p id="modal-lbl-intl" class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Internasional</p>
+            <div id="modal-intl-val" class="mt-1 font-semibold text-xs text-slate-700"></div>
+          </div>
+        </div>
+
+        <!-- Section 1: Overview / Deskripsi -->
+        <div class="space-y-2">
+          <h3 id="modal-sec-about" class="text-xs font-bold text-sky-800 tracking-wider uppercase flex items-center">
+            <svg class="w-4 h-4 mr-1.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Tentang Program Studi</span>
+          </h3>
+          <p id="modal-desc" class="text-slate-600 leading-relaxed text-xs sm:text-sm bg-slate-50/70 p-4 rounded-xl border border-slate-100"></p>
+        </div>
+
+        <!-- Section 2: Core Curriculum / What it Teaches -->
+        <div class="space-y-2.5">
+          <h3 id="modal-sec-focus" class="text-xs font-bold text-sky-800 tracking-wider uppercase flex items-center">
+            <svg class="w-4 h-4 mr-1.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>Fokus Pembelajaran &amp; Kurikulum Inti</span>
+          </h3>
+          <ul id="modal-focus-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs"></ul>
+        </div>
+
+        <!-- Section 3: Career Prospects / What Graduates Do -->
+        <div class="space-y-2.5">
+          <h3 id="modal-sec-career" class="text-xs font-bold text-sky-800 tracking-wider uppercase flex items-center">
+            <svg class="w-4 h-4 mr-1.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Prospek Karir &amp; Lapangan Kerja Lulusan</span>
+          </h3>
+          <div id="modal-career-tags" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Action Buttons -->
+      <div class="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center space-x-2">
+          <button id="modal-btn-copy" class="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition shadow-sm">
+            <svg class="w-4 h-4 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span>Salin Tautan</span>
+          </button>
+          <a id="modal-btn-sk" href="#" target="_blank" class="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-sky-700 hover:bg-slate-100 transition shadow-sm hidden">
+            <svg class="w-4 h-4 mr-1.5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>Dokumen SK</span>
+          </a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <a id="modal-btn-website" href="#" target="_blank" class="inline-flex items-center px-4 py-2 rounded-xl text-xs font-semibold bg-sky-700 text-white hover:bg-sky-800 transition shadow-sm hidden">
+            <span>Kunjungi Situs Resmi</span>
+            <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <button id="modal-btn-close-action" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 text-slate-700 hover:bg-slate-300 transition">
+            Tutup
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Notification Toast (for Copy Link) -->
   <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition duration-300 ease-out bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 pointer-events-none">
@@ -358,7 +457,19 @@
         toast_failed: "Gagal menyalin tautan",
         footer_source: "Data bersumber dari sistem informasi <strong>SPMB Universitas Sebelas Maret (UNS)</strong>.",
         footer_update_lbl: "Pembaruan data terakhir:",
-        footer_disclaimer: "Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi."
+        footer_disclaimer: "Status akreditasi resmi dapat diverifikasi melalui dokumen SK pada masing-masing program studi.",
+        modal_sec_about: "Tentang Program Studi",
+        modal_sec_focus: "Fokus Pembelajaran & Kurikulum Inti",
+        modal_sec_career: "Prospek Karir & Lapangan Kerja Lulusan",
+        modal_lbl_acc: "Akreditasi",
+        modal_lbl_quota: "Daya Tampung",
+        modal_lbl_loc: "Lokasi Kampus",
+        modal_lbl_intl: "Internasional",
+        modal_btn_website: "Kunjungi Situs Resmi",
+        modal_btn_sk: "Dokumen SK",
+        modal_btn_copy: "Salin Tautan",
+        modal_btn_close: "Tutup",
+        card_view_detail: "Lihat Detail"
       },
       en: {
         nav_title: "Study Programs & Accreditation Directory",
@@ -424,13 +535,26 @@
         toast_failed: "Failed to copy link",
         footer_source: "Data sourced from <strong>SPMB Universitas Sebelas Maret (UNS)</strong> official portal.",
         footer_update_lbl: "Last dataset snapshot:",
-        footer_disclaimer: "Official accreditation certificates can be verified through the decree documents provided for each study program."
+        footer_disclaimer: "Official accreditation certificates can be verified through the decree documents provided for each study program.",
+        modal_sec_about: "About This Study Program",
+        modal_sec_focus: "Core Curriculum & Study Focus",
+        modal_sec_career: "Career Prospects & Graduate Opportunities",
+        modal_lbl_acc: "Accreditation",
+        modal_lbl_quota: "Quota",
+        modal_lbl_loc: "Campus Location",
+        modal_lbl_intl: "International",
+        modal_btn_website: "Official Website",
+        modal_btn_sk: "Decree Document",
+        modal_btn_copy: "Copy Permalink",
+        modal_btn_close: "Close",
+        card_view_detail: "View Details"
       }
     };
 
     // State
     let currentLang = localStorage.getItem('uns_dir_lang') || 'id';
     let prodiData = window.UNS_PRODI_DATA || [];
+    let activeModalProdi = null;
     let currentLevel = 'ALL';
     let currentFaculty = 'ALL';
     let currentRumpun = 'ALL';
@@ -581,6 +705,36 @@
       document.getElementById('footer-update-lbl').textContent = t.footer_update_lbl;
       document.getElementById('footer-disclaimer').textContent = t.footer_disclaimer;
 
+      // Modal labels
+      const secAbout = document.getElementById('modal-sec-about');
+      if (secAbout) secAbout.querySelector('span').textContent = t.modal_sec_about;
+      const secFocus = document.getElementById('modal-sec-focus');
+      if (secFocus) secFocus.querySelector('span').textContent = t.modal_sec_focus;
+      const secCareer = document.getElementById('modal-sec-career');
+      if (secCareer) secCareer.querySelector('span').textContent = t.modal_sec_career;
+
+      const lblAcc = document.getElementById('modal-lbl-acc');
+      if (lblAcc) lblAcc.textContent = t.modal_lbl_acc;
+      const lblQuota = document.getElementById('modal-lbl-quota');
+      if (lblQuota) lblQuota.textContent = t.modal_lbl_quota;
+      const lblLoc = document.getElementById('modal-lbl-loc');
+      if (lblLoc) lblLoc.textContent = t.modal_lbl_loc;
+      const lblIntl = document.getElementById('modal-lbl-intl');
+      if (lblIntl) lblIntl.textContent = t.modal_lbl_intl;
+
+      const btnCopy = document.getElementById('modal-btn-copy');
+      if (btnCopy) btnCopy.querySelector('span').textContent = t.modal_btn_copy;
+      const btnSk = document.getElementById('modal-btn-sk');
+      if (btnSk) btnSk.querySelector('span').textContent = t.modal_btn_sk;
+      const btnWeb = document.getElementById('modal-btn-website');
+      if (btnWeb) btnWeb.querySelector('span').textContent = t.modal_btn_website;
+      const btnCloseAct = document.getElementById('modal-btn-close-action');
+      if (btnCloseAct) btnCloseAct.textContent = t.modal_btn_close;
+
+      if (activeModalProdi) {
+        populateModalData(activeModalProdi);
+      }
+
       updateFreshness();
       render();
     }
@@ -686,6 +840,21 @@
       viewGridBtn.addEventListener('click', () => setView('grid'));
       viewTableBtn.addEventListener('click', () => setView('table'));
       resetFiltersBtn.addEventListener('click', resetFilters);
+
+      // Modal Events
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProdiModal);
+      const modalCloseAction = document.getElementById('modal-btn-close-action');
+      if (modalCloseAction) modalCloseAction.addEventListener('click', closeProdiModal);
+      const prodiModal = document.getElementById('prodi-modal');
+      if (prodiModal) {
+        prodiModal.addEventListener('click', (e) => {
+          if (e.target === prodiModal) closeProdiModal();
+        });
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && activeModalProdi) closeProdiModal();
+      });
     }
 
     function setView(view) {
@@ -776,6 +945,12 @@
       if (params.has('lang')) {
         applyLanguage(params.get('lang'));
       }
+      if (params.has('prodi')) {
+        const prodiId = params.get('prodi');
+        setTimeout(() => {
+          openProdiModal(prodiId);
+        }, 120);
+      }
     }
 
     function syncUrlParams() {
@@ -788,6 +963,7 @@
       if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
       if (currentIntlOnly) params.set('intl', '1');
       if (currentLang !== 'id') params.set('lang', currentLang);
+      if (activeModalProdi) params.set('prodi', activeModalProdi.id);
 
       const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
       window.history.replaceState({}, '', newUrl);
@@ -805,13 +981,125 @@
 
     window.copyProdiLink = function(id) {
       const t = I18N[currentLang];
-      const url = window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(id) + (currentLang !== 'id' ? '&lang=' + currentLang : '');
+      const url = window.location.origin + window.location.pathname + '?prodi=' + encodeURIComponent(id) + (currentLang !== 'id' ? '&lang=' + currentLang : '');
       navigator.clipboard.writeText(url).then(() => {
         showToast(t.toast_copied);
       }).catch(() => {
         showToast(t.toast_failed);
       });
     };
+
+    window.openProdiModal = function(id) {
+      const item = prodiData.find(p => p.id === id);
+      if (!item) return;
+      activeModalProdi = item;
+
+      populateModalData(item);
+
+      const modal = document.getElementById('prodi-modal');
+      const card = document.getElementById('modal-card');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      }, 10);
+      document.body.classList.add('overflow-hidden');
+
+      syncUrlParams();
+    };
+
+    window.closeProdiModal = function() {
+      const modal = document.getElementById('prodi-modal');
+      const card = document.getElementById('modal-card');
+      activeModalProdi = null;
+
+      modal.classList.add('opacity-0');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+      document.body.classList.remove('overflow-hidden');
+
+      syncUrlParams();
+    };
+
+    function populateModalData(item) {
+      const langKey = currentLang;
+
+      document.getElementById('modal-prodi-name').textContent = item.nama_prodi;
+      
+      const jenjangBadge = document.getElementById('modal-jenjang');
+      jenjangBadge.textContent = item.jenjang;
+      jenjangBadge.className = `px-2.5 py-0.5 rounded-md text-xs font-bold border ${getJenjangBadgeColor(item.jenjang)}`;
+
+      const kodeBadge = document.getElementById('modal-kode');
+      kodeBadge.textContent = item.kode_prodi ? `#${item.kode_prodi}` : '';
+
+      document.getElementById('modal-rumpun').textContent = item.rumpun;
+      document.getElementById('modal-fakultas-badge').textContent = item.fakultas_singkatan;
+      document.getElementById('modal-fakultas-name').textContent = item.fakultas;
+
+      const accVal = document.getElementById('modal-acc-val');
+      accVal.innerHTML = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold ${getAccreditationBadgeClass(item.akreditasi)}">${item.akreditasi} ${item.akreditasi_skor ? `(${item.akreditasi_skor})` : ''}</span>`;
+
+      document.getElementById('modal-quota-val').textContent = item.daya_tampung || '-';
+      document.getElementById('modal-loc-val').textContent = item.lokasi_kampus || '-';
+
+      const intlVal = document.getElementById('modal-intl-val');
+      if (item.akreditasi_internasional && item.akreditasi_internasional.length > 0) {
+        intlVal.innerHTML = item.akreditasi_internasional.map(i => `<span class="inline-block px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300 font-semibold text-[10px] mr-1 mb-1">${i}</span>`).join('');
+      } else {
+        intlVal.textContent = '-';
+      }
+
+      // Profile details
+      const prof = item.profil || {};
+      const descObj = prof.deskripsi || {};
+      const descText = descObj[langKey] || descObj['id'] || '';
+      document.getElementById('modal-desc').textContent = descText;
+
+      const fokusList = document.getElementById('modal-focus-list');
+      const fokusObj = prof.fokus_studi || {};
+      const fokusItems = fokusObj[langKey] || fokusObj['id'] || [];
+      fokusList.innerHTML = fokusItems.map(f => `
+        <li class="flex items-start bg-slate-50 border border-slate-200/70 rounded-lg p-2.5 text-slate-700">
+          <svg class="w-4 h-4 text-sky-600 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>${f}</span>
+        </li>
+      `).join('');
+
+      const careerTags = document.getElementById('modal-career-tags');
+      const careerObj = prof.prospek_karir || {};
+      const careerItems = careerObj[langKey] || careerObj['id'] || [];
+      careerTags.innerHTML = careerItems.map(c => `
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-800 border border-sky-200">
+          <svg class="w-3 h-3 text-sky-500 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          ${c}
+        </span>
+      `).join('');
+
+      // Buttons
+      const websiteBtn = document.getElementById('modal-btn-website');
+      if (item.website) {
+        websiteBtn.href = item.website;
+        websiteBtn.classList.remove('hidden');
+      } else {
+        websiteBtn.classList.add('hidden');
+      }
+
+      const skBtn = document.getElementById('modal-btn-sk');
+      if (item.link_sk_akreditasi) {
+        skBtn.href = item.link_sk_akreditasi;
+        skBtn.classList.remove('hidden');
+      } else {
+        skBtn.classList.add('hidden');
+      }
+
+      const copyBtn = document.getElementById('modal-btn-copy');
+      copyBtn.onclick = () => copyProdiLink(item.id);
+    }
 
     function filterData() {
       return prodiData.filter(item => {
@@ -909,7 +1197,7 @@
         const isPsdku = item.lokasi_kampus && item.lokasi_kampus.includes('PSDKU');
 
         return `
-          <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition p-5 flex flex-col justify-between group">
+          <div onclick="openProdiModal('${item.id}')" class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-sky-300 transition p-5 flex flex-col justify-between group cursor-pointer relative">
             <div>
               <!-- Header badges -->
               <div class="flex items-center justify-between gap-2 mb-2.5">
@@ -927,10 +1215,15 @@
                 </span>
               </div>
 
-              <!-- Program Name -->
-              <h3 class="text-base font-bold text-slate-900 group-hover:text-sky-700 transition leading-snug">
-                ${item.nama_prodi}
-              </h3>
+              <!-- Program Name & Indicator -->
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-sky-700 transition leading-snug">
+                  ${item.nama_prodi}
+                </h3>
+                <span class="text-slate-300 group-hover:text-sky-600 transition shrink-0 mt-0.5" title="${t.card_view_detail}">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </span>
+              </div>
 
               <!-- Faculty -->
               <div class="mt-1 flex items-center space-x-1.5 text-xs text-slate-500">
@@ -954,7 +1247,7 @@
               <div class="text-slate-500">
                 ${t.card_quota} <strong class="text-slate-800">${item.daya_tampung || '-'}</strong>
               </div>
-              <div class="flex items-center space-x-1.5">
+              <div class="flex items-center space-x-1.5" onclick="event.stopPropagation()">
                 <button onclick="copyProdiLink('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" title="${t.card_copy_title}">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 </button>
@@ -978,9 +1271,9 @@
 
       // Render Table
       tableBody.innerHTML = filtered.map((item, idx) => `
-        <tr class="hover:bg-slate-50/80 transition">
+        <tr onclick="openProdiModal('${item.id}')" class="hover:bg-sky-50/50 cursor-pointer transition">
           <td class="p-3.5 text-center text-slate-400 font-mono">${idx + 1}</td>
-          <td class="p-3.5 font-bold text-slate-900">${item.nama_prodi}</td>
+          <td class="p-3.5 font-bold text-slate-900 group-hover:text-sky-700">${item.nama_prodi}</td>
           <td class="p-3.5">
             <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${getJenjangBadgeColor(item.jenjang)}">
               ${item.jenjang}
@@ -1003,7 +1296,7 @@
               : '<span class="text-slate-300">-</span>'}
           </td>
           <td class="p-3.5 font-medium">${item.daya_tampung || '-'}</td>
-          <td class="p-3.5 text-center">
+          <td class="p-3.5 text-center" onclick="event.stopPropagation()">
             <div class="inline-flex items-center space-x-1">
               ${item.website ? `<a href="${item.website}" target="_blank" class="p-1 text-sky-700 hover:text-sky-900" title="${t.card_website}"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>` : ''}
               ${item.link_sk_akreditasi ? `<a href="${item.link_sk_akreditasi}" target="_blank" class="p-1 text-slate-500 hover:text-slate-800" title="${t.card_sk_title}"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></a>` : ''}
