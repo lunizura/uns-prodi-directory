@@ -272,10 +272,11 @@
         </table>
       </div>
     </div>
+  </main>
 
   <!-- Modal Dialog: Prodi Overall View -->
-  <div id="prodi-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-labelledby="modal-prodi-name">
-    <div id="modal-card" class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col relative transform scale-95 transition-transform duration-200">
+  <div id="prodi-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm hidden" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-prodi-name">
+    <div id="modal-card" class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col relative">
       
       <!-- Modal Header Banner -->
       <div class="p-5 sm:p-6 border-b border-slate-100 flex items-start justify-between relative bg-gradient-to-r from-sky-50/50 via-slate-50 to-white">
@@ -954,19 +955,23 @@
     }
 
     function syncUrlParams() {
-      const params = new URLSearchParams();
-      if (currentSearch) params.set('q', currentSearch);
-      if (currentFaculty !== 'ALL') params.set('fakultas', currentFaculty);
-      if (currentLevel !== 'ALL') params.set('jenjang', currentLevel);
-      if (currentRumpun !== 'ALL') params.set('rumpun', currentRumpun);
-      if (currentLocation !== 'ALL') params.set('lokasi', currentLocation);
-      if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
-      if (currentIntlOnly) params.set('intl', '1');
-      if (currentLang !== 'id') params.set('lang', currentLang);
-      if (activeModalProdi) params.set('prodi', activeModalProdi.id);
+      try {
+        const params = new URLSearchParams();
+        if (currentSearch) params.set('q', currentSearch);
+        if (currentFaculty !== 'ALL') params.set('fakultas', currentFaculty);
+        if (currentLevel !== 'ALL') params.set('jenjang', currentLevel);
+        if (currentRumpun !== 'ALL') params.set('rumpun', currentRumpun);
+        if (currentLocation !== 'ALL') params.set('lokasi', currentLocation);
+        if (currentAccreditation !== 'ALL') params.set('akreditasi', currentAccreditation);
+        if (currentIntlOnly) params.set('intl', '1');
+        if (currentLang !== 'id') params.set('lang', currentLang);
+        if (activeModalProdi) params.set('prodi', activeModalProdi.id);
 
-      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-      window.history.replaceState({}, '', newUrl);
+        const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        window.history.replaceState({}, '', newUrl);
+      } catch (e) {
+        // Fallback for sandboxed or local environments where history.replaceState is restricted
+      }
     }
 
     function showToast(message) {
@@ -979,17 +984,32 @@
       }, 2200);
     }
 
-    window.copyProdiLink = function(id) {
+    function copyProdiLink(id) {
       const t = I18N[currentLang];
       const url = window.location.origin + window.location.pathname + '?prodi=' + encodeURIComponent(id) + (currentLang !== 'id' ? '&lang=' + currentLang : '');
-      navigator.clipboard.writeText(url).then(() => {
-        showToast(t.toast_copied);
-      }).catch(() => {
-        showToast(t.toast_failed);
-      });
-    };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast(t.toast_copied);
+        }).catch(() => {
+          showToast(t.toast_failed);
+        });
+      } else {
+        const tempInput = document.createElement('input');
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          showToast(t.toast_copied);
+        } catch (e) {
+          showToast(t.toast_failed);
+        }
+        document.body.removeChild(tempInput);
+      }
+    }
+    window.copyProdiLink = copyProdiLink;
 
-    window.openProdiModal = function(id) {
+    function openProdiModal(id) {
       const item = prodiData.find(p => p.id === id);
       if (!item) return;
       activeModalProdi = item;
@@ -997,33 +1017,29 @@
       populateModalData(item);
 
       const modal = document.getElementById('prodi-modal');
-      const card = document.getElementById('modal-card');
-      modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        card.classList.remove('scale-95');
-        card.classList.add('scale-100');
-      }, 10);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+      }
       document.body.classList.add('overflow-hidden');
 
       syncUrlParams();
-    };
+    }
+    window.openProdiModal = openProdiModal;
 
-    window.closeProdiModal = function() {
+    function closeProdiModal() {
       const modal = document.getElementById('prodi-modal');
-      const card = document.getElementById('modal-card');
       activeModalProdi = null;
 
-      modal.classList.add('opacity-0');
-      card.classList.remove('scale-100');
-      card.classList.add('scale-95');
-      setTimeout(() => {
+      if (modal) {
         modal.classList.add('hidden');
-      }, 200);
+        modal.style.display = 'none';
+      }
       document.body.classList.remove('overflow-hidden');
 
       syncUrlParams();
-    };
+    }
+    window.closeProdiModal = closeProdiModal;
 
     function populateModalData(item) {
       const langKey = currentLang;
