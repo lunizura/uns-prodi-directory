@@ -1,0 +1,38 @@
+name: Feature Request
+description: Suggest a new capability, visualization tool, filter, or analytical feature for the UNS directory.
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share ideas for improving the Universitas Sebelas Maret (UNS) Study Programs Directory.
+  - type: input
+    id: feature_summary
+    attributes:
+      label: Feature Summary
+      description: A concise title or summary of the proposed enhancement.
+      placeholder: Add historical admission selectivity comparison graph
+    validations:
+      required: true
+  - type: textarea
+    id: problem_statement
+    attributes:
+      label: Problem Statement or Use Case
+      description: What challenge or user need does this feature address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution & Interface Design
+      description: Describe how the feature should behave and integrate with existing search/filter modules.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Approaches Considered
+      description: Have you considered any alternative designs or workarounds?
+    validations:
+      required: false
