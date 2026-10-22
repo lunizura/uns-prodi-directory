@@ -1,0 +1,52 @@
+name: Academic Data Correction
+description: Report outdated accreditation status, capacity shift, or curriculum data for UNS.
+title: "[DATA]: "
+labels: ["data-correction", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping keep the Universitas Sebelas Maret (UNS) study programs directory accurate and up to date.
+  - type: input
+    id: prodi_name
+    attributes:
+      label: Study Program Name & Degree
+      description: Enter the full program name (e.g. S1 Teknik Informatika, D4 Keselamatan dan Kesehatan Kerja).
+      placeholder: S1 Informatika
+    validations:
+      required: true
+  - type: input
+    id: faculty
+    attributes:
+      label: Faculty / School
+      description: Enter the faculty acronym (e.g. FATISDA, FT, FK, FEB, SV).
+      placeholder: FATISDA
+    validations:
+      required: true
+  - type: dropdown
+    id: correction_type
+    attributes:
+      label: Type of Correction
+      options:
+        - Accreditation Rank (Unggul, Baik Sekali, Baik, A, B)
+        - International Accreditation (ASIIN, AQAS, FIBAA, IABEE)
+        - Admission Capacity (Daya Tampung)
+        - Campus Location (Surakarta, Kebumen, Madiun)
+        - Broken Official Link or SK Document
+        - Other Data Discrepancy
+    validations:
+      required: true
+  - type: textarea
+    id: current_data
+    attributes:
+      label: Current Data in Directory
+      description: What is currently displayed in the directory?
+    validations:
+      required: true
+  - type: textarea
+    id: corrected_data
+    attributes:
+      label: Corrected Data & Official Citation
+      description: Provide the verified data and link to official SPMB UNS (spmb.uns.ac.id) or BAN-PT announcement.
+    validations:
+      required: true
