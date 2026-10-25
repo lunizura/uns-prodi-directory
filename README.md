@@ -1,5 +1,6 @@
 # Direktori Program Studi dan Akreditasi UNS
 
+[![CI](https://github.com/lunizura/uns-prodi-directory/actions/workflows/ci.yml/badge.svg)](https://github.com/lunizura/uns-prodi-directory/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Data Source](https://img.shields.io/badge/Data%20Source-SPMB%20UNS-0284c7.svg)](https://spmb.uns.ac.id)
 [![Total Study Programs](https://img.shields.io/badge/Total%20Prodi-176-emerald.svg)](#ringkasan-data)
@@ -7,7 +8,7 @@
 [![Akreditasi Internasional](https://img.shields.io/badge/Internasional-36%20Prodi-teal.svg)](#ringkasan-data)
 [![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages%20Ready-brightgreen.svg)](#deployment-ke-github-pages)
 
-[Bahasa Indonesia](#bahasa-indonesia) | [English](#english)
+[Bahasa Indonesia](#bahasa-indonesia) | [English](#english) | [Dokumentasi Fakultas & Panduan](#dokumentasi-fakultas--panduan-akademik)
 
 ---
 
@@ -75,19 +76,35 @@ Designed for prospective university applicants (preparing for SNBP, SNBT, and Se
 - **Automated Freshness Warning:** Alerts visitors automatically if data has not been updated within 90 days.
 - **Zero-Dependency Deployment:** Ready to deploy immediately to **GitHub Pages** or **Vercel** with no compilation steps or npm packages required.
 
-### Data Summary
+---
 
-Extracted directly from official SPMB Universitas Sebelas Maret portals (with deduplication of redundant records):
+## Dokumentasi Fakultas & Panduan Akademik
 
-| Metric | Total | Description |
-| :--- | :--- | :--- |
-| **Total Study Programs** | **176** | Spanning all academic levels |
-| **Undergraduate (S1)** | 77 programs | Regular and PSDKU Kebumen |
-| **Vocational School (D3/D4)** | 26 programs | Diploma 3 (11) and Applied Bachelor D4 (15) |
-| **Postgraduate (S2/S3)** | 73 programs | Master S2 (51) and Doctoral S3 (22) |
-| **Accredited Unggul (Superior)** | 126 programs | ~71% of all study programs |
-| **International Accreditation** | 36 programs | ASIIN (16), AQAS (11), FIBAA (5), IABEE (4) |
-| **Total Faculties & Schools** | 15 units | Including SV and Graduate School (SPS) |
+Daftar dokumen profil akademik fakultas dan panduan seleksi masuk UNS:
+
+- **Panduan Jalur Masuk:**
+  - [Panduan SPMB Mandiri UNS (UTUL, Nilai UTBK, Prestasi, Afirmasi)](docs/admissions/spmb_mandiri.md)
+- **Profil Fakultas Saintek & Medis:**
+  - [Fakultas Kedokteran (FK)](docs/faculties/fk.md) - RS UNS Kartasura, Moewardi, S1 Kedokteran, Kebidanan
+  - [Fakultas Teknik (FT)](docs/faculties/ft.md) - 7 Departemen Keteknikan, Akreditasi IABEE, Riset Bengawan
+  - [Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA)](docs/faculties/fmipa.md) - Akreditasi Internasional ASIIN
+  - [Fakultas Pertanian (FP)](docs/faculties/fp.md) - Akreditasi Internasional AQAS, Kebun Jumantono
+  - [Fakultas Teknologi Informasi dan Sains Data (FATISDA)](docs/faculties/fatisda.md) - S1 Informatika & Sains Data
+- **Profil Fakultas Soshum, Seni & Vokasi:**
+  - [Fakultas Ekonomika dan Bisnis (FEB)](docs/faculties/feb.md) - Akreditasi Internasional ABEST21
+  - [Fakultas Hukum (FH)](docs/faculties/fh.md) - LKBH, Moot Court, Riset Hukum Progresif
+  - [Fakultas Keguruan dan Ilmu Pendidikan (FKIP)](docs/faculties/fkip.md) - 26 Prodi Kependidikan, PPG
+  - [Fakultas Ilmu Sosial dan Politik & Ilmu Budaya (FISIP & FIB)](docs/faculties/fisip_fib.md) - Komunikasi, Sosiologi, Sastra Daerah/Jawa
+  - [Fakultas Seni Rupa, Desain & Keolahragaan (FSRD & FKOR)](docs/faculties/fsrd_fkor.md) - DKV, Interior, Mode Batik, Sport Science
+  - [Sekolah Vokasi (SV)](docs/faculties/sv.md) - 15 Sarjana Terapan (D4), K3 Unggul, Teaching Factory
+
+---
+
+## Partisipasi Komunitas & Tata Kelola
+
+- [Panduan Kontribusi (CONTRIBUTING.md)](CONTRIBUTING.md)
+- [Pedoman Komunitas (CODE_OF_CONDUCT.md)](CODE_OF_CONDUCT.md)
+- [Kebijakan Keamanan (SECURITY.md)](SECURITY.md)
 
 ---
 
